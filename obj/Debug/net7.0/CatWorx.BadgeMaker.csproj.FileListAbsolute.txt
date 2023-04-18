@@ -13,3 +13,9 @@ C:\Users\Michael Barrientos\Desktop\CatWorx.BadgeMaker\obj\Debug\net7.0\refint\C
 C:\Users\Michael Barrientos\Desktop\CatWorx.BadgeMaker\obj\Debug\net7.0\CatWorx.BadgeMaker.pdb
 C:\Users\Michael Barrientos\Desktop\CatWorx.BadgeMaker\obj\Debug\net7.0\CatWorx.BadgeMaker.genruntimeconfig.cache
 C:\Users\Michael Barrientos\Desktop\CatWorx.BadgeMaker\obj\Debug\net7.0\ref\CatWorx.BadgeMaker.dll
+C:\Users\Michael Barrientos\Desktop\CatWorx.BadgeMaker\bin\Debug\net7.0\SkiaSharp.dll
+C:\Users\Michael Barrientos\Desktop\CatWorx.BadgeMaker\bin\Debug\net7.0\runtimes\osx\native\libSkiaSharp.dylib
+C:\Users\Michael Barrientos\Desktop\CatWorx.BadgeMaker\bin\Debug\net7.0\runtimes\win-arm64\native\libSkiaSharp.dll
+C:\Users\Michael Barrientos\Desktop\CatWorx.BadgeMaker\bin\Debug\net7.0\runtimes\win-x64\native\libSkiaSharp.dll
+C:\Users\Michael Barrientos\Desktop\CatWorx.BadgeMaker\bin\Debug\net7.0\runtimes\win-x86\native\libSkiaSharp.dll
+C:\Users\Michael Barrientos\Desktop\CatWorx.BadgeMaker\obj\Debug\net7.0\CatWorx.BadgeMaker.csproj.CopyComplete
