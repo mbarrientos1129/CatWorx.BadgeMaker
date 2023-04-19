@@ -1,7 +1,10 @@
 using System;
 using System.IO;
-using SkiaSharp;
 using System.Collections.Generic;
+using System.Net.Http;
+using System.Threading.Tasks;
+using SkiaSharp;
+
 
 namespace CatWorx.BadgeMaker
 {
@@ -38,12 +41,38 @@ namespace CatWorx.BadgeMaker
             }
         }
 
-        public static void MakeBadges(List<Employee> employees)
+        async public static Task MakeBadges(List<Employee> employees)
         {
-            SKImage newImage = SKImage.FromEncodedData(File.OpenRead("badge.png"));
+            int BADGE_WIDTH = 669;
+            int BADGE_HEIGHT = 1044;
 
-            SKData data = newImage.Encode();
-            data.SaveTo(File.OpenWrite("data/employeeBadge.png"));
+            int PHOTO_LEFT_X = 184;
+            int PHOTO_TOP_Y = 215;
+            int PHOTO_RIGHT_X = 486;
+            int PHOTO_BOTTOM_Y = 517;
+
+            using(HttpClient client = new HttpClient())
+            {   //Instance of HTTPClient is disposed after code in the block has run
+                for (int i = 0; i < employees.Count; i++)
+                {
+                    //GetStreamAsync() method and convert the stream it returns into an SKImage
+                    SKImage photo = SKImage.FromEncodedData(await client.GetStreamAsync(employees[i].GetPhotoUrl()));
+                    SKImage background = SKImage.FromEncodedData(File.OpenRead("badge.png"));
+
+                    //SKBitemap data type to initialize the size parameters
+                    //SKCanvas class to insert images on the badge
+                    SKBitmap badge = new SKBitmap(BADGE_WIDTH, BADGE_HEIGHT);
+                    SKCanvas canvas = new SKCanvas(badge);
+
+                    //DrawImage() to lert us draw image on the badge and SKRect allows us to allocate a position and size on the badge
+                    canvas.DrawImage(background, new SKRect(0, 0, BADGE_WIDTH, BADGE_HEIGHT));
+                    canvas.DrawImage(photo, new SKRect(PHOTO_LEFT_X, PHOTO_TOP_Y, PHOTO_RIGHT_X, PHOTO_BOTTOM_Y));
+                    
+                    SKImage finaleImage = SKImage.FromBitmap(badge);
+                    SKData data = finaleImage.Encode();
+                    data.SaveTo(File.OpenWrite("data/employeeBadge.png"));
+                }
+            }
         }
     }
 }
